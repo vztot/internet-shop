@@ -14,7 +14,6 @@ public class Application {
         initializeDb(productService);
 
         productService.getAll().forEach(System.out::println);
-
     }
 
     private static void initializeDb(ProductService productService) {
@@ -29,7 +28,9 @@ public class Application {
         productService.deleteByProduct(product1);
         productService.delete(product2.getProductId());
 
-        product3.setPrice(new BigDecimal(15999));
-        productService.update(product3);
+        Product productUpdateChecker = new Product("HONDA 2020 CBR600RR", new BigDecimal(19999));
+        productUpdateChecker.setProductId(3L);
+
+        productService.update(productUpdateChecker);
     }
 }
