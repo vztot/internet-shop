@@ -2,22 +2,22 @@ package mate.academy.internetshop.model;
 
 import java.math.BigDecimal;
 
-public class Item {
-    private Long itemId;
+public class Product {
+    private Long productId;
     private String name;
     private BigDecimal price;
 
-    public Item(String name, BigDecimal price) {
+    public Product(String name, BigDecimal price) {
         this.name = name;
         this.price = price;
     }
 
-    public Long getItemId() {
-        return itemId;
+    public Long getProductId() {
+        return productId;
     }
 
-    public void setItemId(Long itemId) {
-        this.itemId = itemId;
+    public void setProductId(Long productId) {
+        this.productId = productId;
     }
 
     public String getName() {
@@ -38,6 +38,6 @@ public class Item {
 
     @Override
     public String toString() {
-        return "Item{itemId=" + itemId + ", name='" + name + '\'' + ", price=" + price + '}';
+        return "Item{productId=" + productId + ", name='" + name + '\'' + ", price=" + price + '}';
     }
 }

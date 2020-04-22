@@ -2,7 +2,7 @@ package mate.academy.internetshop;
 
 import java.math.BigDecimal;
 import mate.academy.internetshop.lib.Injector;
-import mate.academy.internetshop.model.Item;
+import mate.academy.internetshop.model.Product;
 import mate.academy.internetshop.service.ItemService;
 
 public class Main {
@@ -18,12 +18,18 @@ public class Main {
     }
 
     private static void initializeDb(ItemService itemService) {
-        Item item1 = new Item("HONDA 2020 CB650R", new BigDecimal(9199));
-        Item item2 = new Item("HONDA 2020 REBEL 500", new BigDecimal(6199));
-        Item item3 = new Item("HONDA 2020 CBR600RR", new BigDecimal(11799));
+        Product product1 = new Product("HONDA 2020 CB650R", new BigDecimal(9199));
+        Product product2 = new Product("HONDA 2020 REBEL 500", new BigDecimal(6199));
+        Product product3 = new Product("HONDA 2020 CBR600RR", new BigDecimal(11799));
 
-        itemService.create(item1);
-        itemService.create(item2);
-        itemService.create(item3);
+        itemService.create(product1);
+        itemService.create(product2);
+        itemService.create(product3);
+
+        itemService.deleteByProduct(product1);
+        itemService.delete(product2.getProductId());
+
+        product3.setPrice(new BigDecimal(15999));
+        itemService.update(product3);
     }
 }

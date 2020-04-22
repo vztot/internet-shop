@@ -5,7 +5,7 @@ import java.util.Optional;
 import mate.academy.internetshop.dao.ItemDao;
 import mate.academy.internetshop.lib.Inject;
 import mate.academy.internetshop.lib.Service;
-import mate.academy.internetshop.model.Item;
+import mate.academy.internetshop.model.Product;
 import mate.academy.internetshop.service.ItemService;
 
 @Service
@@ -15,32 +15,32 @@ public class ItemServiceImpl implements ItemService {
     private ItemDao itemDao;
 
     @Override
-    public Item create(Item item) {
-        return itemDao.create(item);
+    public Product create(Product product) {
+        return itemDao.create(product);
     }
 
     @Override
-    public Optional<Item> get(Long id) {
+    public Optional<Product> get(Long id) {
         return itemDao.get(id);
     }
 
     @Override
-    public List<Item> getAll() {
+    public List<Product> getAll() {
         return itemDao.getAll();
     }
 
     @Override
-    public Item update(Item item) {
-        return itemDao.update(item);
-    }
-
-    @Override
-    public boolean deleteById(Long id) {
-        return false;
+    public Product update(Product product) {
+        return itemDao.update(product);
     }
 
     @Override
     public boolean delete(Long id) {
-        return false;
+        return itemDao.delete(id);
+    }
+
+    @Override
+    public boolean deleteByProduct(Product product) {
+        return itemDao.delete(product.getProductId());
     }
 }
