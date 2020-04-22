@@ -17,7 +17,7 @@ public class Storage {
     private static final List<ShoppingCart> choppingCarts = new ArrayList<>();
     private static final List<Order> orders = new ArrayList<>();
 
-    public static Product addItem(Product product) {
+    public static Product addProduct(Product product) {
         productId++;
         product.setProductId(productId);
         products.add(product);
