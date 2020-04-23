@@ -1,7 +1,6 @@
 package mate.academy.internetshop.dao.impl;
 
 import java.util.List;
-import java.util.NoSuchElementException;
 import java.util.Optional;
 import mate.academy.internetshop.dao.ProductDao;
 import mate.academy.internetshop.db.Storage;
@@ -32,7 +31,7 @@ public class ProductDaoImpl implements ProductDao {
     public Product update(Product product) {
         Product productThatNeedUpdate = get(product
                 .getProductId())
-                .orElseThrow(NoSuchElementException::new);
+                .get();
 
         productThatNeedUpdate.setName(product.getName());
         productThatNeedUpdate.setPrice(product.getPrice());
@@ -40,9 +39,8 @@ public class ProductDaoImpl implements ProductDao {
     }
 
     @Override
-    public boolean delete(Long id) {
+    public boolean delete(Long productId) {
         return Storage.getProducts()
-                .remove(get(id)
-                .orElseThrow(NoSuchElementException::new));
+                .removeIf(product -> product.getProductId().equals(productId));
     }
 }
