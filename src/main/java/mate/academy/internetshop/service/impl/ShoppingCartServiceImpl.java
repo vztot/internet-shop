@@ -17,23 +17,13 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
 
     @Override
     public ShoppingCart addProduct(ShoppingCart shoppingCart, Product product) {
-        List<Product> newProductListOfUser = shoppingCartDao
-                .get(shoppingCart.getShoppingCartId())
-                .get()
-                .getProducts();
-        newProductListOfUser.add(product);
-        shoppingCart.setProducts(newProductListOfUser);
+        shoppingCart.getProducts().add(product);
         return shoppingCartDao.update(shoppingCart);
     }
 
     @Override
     public boolean deleteProduct(ShoppingCart shoppingCart, Product product) {
-        List<Product> newProductListOfUser = shoppingCartDao
-                .get(shoppingCart.getShoppingCartId())
-                .get()
-                .getProducts();
-        boolean isRemoved = newProductListOfUser.remove(product);
-        shoppingCart.setProducts(newProductListOfUser);
+        boolean isRemoved = shoppingCart.getProducts().remove(product);
         if (isRemoved) {
             shoppingCartDao.update(shoppingCart);
         }
