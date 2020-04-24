@@ -41,4 +41,32 @@ public class Order {
         return "Order{" + "orderId=" + orderId + ", user="
                 + user + ", products=" + products + '}';
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+
+        Order order = (Order) o;
+
+        if (orderId != null ? !orderId.equals(order.orderId) : order.orderId != null) {
+            return false;
+        }
+        if (user != null ? !user.equals(order.user) : order.user != null) {
+            return false;
+        }
+        return products != null ? products.equals(order.products) : order.products == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = orderId != null ? orderId.hashCode() : 0;
+        result = 31 * result + (user != null ? user.hashCode() : 0);
+        result = 31 * result + (products != null ? products.hashCode() : 0);
+        return result;
+    }
 }

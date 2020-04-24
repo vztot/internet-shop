@@ -41,4 +41,33 @@ public class ShoppingCart {
         return "ShoppingCart{" + "shoppingCartId=" + shoppingCartId
                 + ", user=" + user + ", products=" + products + '}';
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+
+        ShoppingCart that = (ShoppingCart) o;
+
+        if (shoppingCartId != null ? !shoppingCartId.equals(that.shoppingCartId)
+                : that.shoppingCartId != null) {
+            return false;
+        }
+        if (user != null ? !user.equals(that.user) : that.user != null) {
+            return false;
+        }
+        return products != null ? products.equals(that.products) : that.products == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = shoppingCartId != null ? shoppingCartId.hashCode() : 0;
+        result = 31 * result + (user != null ? user.hashCode() : 0);
+        result = 31 * result + (products != null ? products.hashCode() : 0);
+        return result;
+    }
 }
