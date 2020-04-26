@@ -30,28 +30,24 @@ public class Application {
     private static void letItTest(UserService userService, ProductService productService,
                                   ShoppingCartService shoppingCartService,
                                   OrderService orderService) {
-
-        User user1 =
-                new User("Alex", "get17", "password");
-        User user2 =
-                new User("Max", "max102901", "asjdhfoiahds2198379821");
-        User user3 =
-                new User("Alice", "alisa2000", "(O)*&()(*&%!@(*#@!&#_(@!*&)");
+        User user1 = new User("Alex", "get17", "password");
+        User user2 = new User("Max", "max102901", "asjdhfoiahds2198379821");
+        User user3 = new User("Alice", "alisa2000", "(O)*&()(*&%!@(*#@!&#_(@!*&)");
 
         Product product1 = new Product("HONDA 2020 CB650R", new BigDecimal(9199));
         Product product2 = new Product("HONDA 2020 REBEL 500", new BigDecimal(6199));
         Product product3 = new Product("HONDA 2020 CBR600RR", new BigDecimal(11799));
 
         ShoppingCart shoppingCart1 =
-                new ShoppingCart(user1, new ArrayList<>(Arrays.asList(new Product[]{product1})));
+                new ShoppingCart(user1,
+                        new ArrayList<>(Arrays.asList(new Product[]{product1})));
         ShoppingCart shoppingCart2 =
                 new ShoppingCart(user2,
                         new ArrayList<>(Arrays.asList(new Product[]{product1, product2})));
         ShoppingCart shoppingCart3 =
                 new ShoppingCart(user3,
-                        new ArrayList<>(
-                                Arrays.asList(
-                                        new Product[]{product1, product2, product3})));
+                        new ArrayList<>(Arrays.asList(
+                                new Product[]{product1, product2, product3})));
 
         Storage.addShoppingCart(shoppingCart1);
         Storage.addShoppingCart(shoppingCart2);
