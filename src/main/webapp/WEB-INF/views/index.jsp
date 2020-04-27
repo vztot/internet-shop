@@ -12,6 +12,8 @@
     <br>
     <li><a href="${pageContext.request.contextPath}/products/add">Add product</a></li>
     <li><a href="${pageContext.request.contextPath}/products/all">All products</a></li>
+    <br>
+    <li><a href="${pageContext.request.contextPath}/shoppingCarts/user1">View shoppingCart of User with 1L Id</a></li>
 </ul>
 </body>
 </html>

@@ -15,8 +15,6 @@ import mate.academy.internetshop.service.ShoppingCartService;
 import mate.academy.internetshop.service.UserService;
 
 public class AddToShoppingCart extends HttpServlet {
-    private static final Long USER_ID = 1L;
-
     private static final Injector injector = Injector.getInstance("mate.academy.internetshop");
     private ShoppingCartService shoppingCartService =
             (ShoppingCartService) injector.getInstance(ShoppingCartService.class);
@@ -33,7 +31,7 @@ public class AddToShoppingCart extends HttpServlet {
         ShoppingCart shoppingCart = null;
 
         try {
-            shoppingCart = shoppingCartService.getByUserId(USER_ID);
+            shoppingCart = shoppingCartService.getByUserId(ShoppingCartController.USER_ID);
         } catch (NoSuchElementException e) {
             e.printStackTrace();
         }
@@ -45,7 +43,6 @@ public class AddToShoppingCart extends HttpServlet {
                     shoppingCartService.create(new ShoppingCart(user, new ArrayList<Product>()));
         }
         shoppingCartService.addProduct(shoppingCart, productService.get(Long.parseLong(productId)));
-        System.out.println(shoppingCartService.getByUserId(USER_ID));
         resp.sendRedirect(req.getContextPath() + "/products/all");
     }
 }
