@@ -11,7 +11,6 @@ import mate.academy.internetshop.model.Product;
 import mate.academy.internetshop.service.ProductService;
 
 public class ProductController extends HttpServlet {
-
     private static final Injector injector = Injector.getInstance("mate.academy.internetshop");
     private ProductService productService =
             (ProductService) injector.getInstance(ProductService.class);

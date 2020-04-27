@@ -45,9 +45,7 @@ public class AddToShoppingCart extends HttpServlet {
                     shoppingCartService.create(new ShoppingCart(user, new ArrayList<Product>()));
         }
         shoppingCartService.addProduct(shoppingCart, productService.get(Long.parseLong(productId)));
-
         System.out.println(shoppingCartService.getByUserId(USER_ID));
-
         resp.sendRedirect(req.getContextPath() + "/products/all");
     }
 }
