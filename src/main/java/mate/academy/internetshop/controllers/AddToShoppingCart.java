@@ -3,6 +3,7 @@ package mate.academy.internetshop.controllers;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.NoSuchElementException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -14,6 +15,7 @@ import mate.academy.internetshop.service.ProductService;
 import mate.academy.internetshop.service.ShoppingCartService;
 import mate.academy.internetshop.service.UserService;
 
+@WebServlet("/shoppingCarts/add")
 public class AddToShoppingCart extends HttpServlet {
     private static final Injector injector = Injector.getInstance("mate.academy.internetshop");
     private ShoppingCartService shoppingCartService =
@@ -39,6 +41,7 @@ public class AddToShoppingCart extends HttpServlet {
         if (shoppingCart == null) {
             User user = new User("ProductUser", "login", "pass");
             userService.create(user);
+            user.setUserId(ShoppingCartController.USER_ID);
             shoppingCart =
                     shoppingCartService.create(new ShoppingCart(user, new ArrayList<Product>()));
         }
