@@ -6,12 +6,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import mate.academy.internetshop.lib.Injector;
+import mate.academy.internetshop.model.Product;
 import mate.academy.internetshop.model.ShoppingCart;
 import mate.academy.internetshop.service.ProductService;
 import mate.academy.internetshop.service.ShoppingCartService;
 
-@WebServlet("/shoppingCart/add")
-public class AddProductToShoppingCartController extends HttpServlet {
+@WebServlet("/shoppingCart/delete")
+public class DeleteProductFromShoppingCartController extends HttpServlet {
     private static final Injector INJECTOR = Injector.getInstance("mate.academy.internetshop");
     private ShoppingCartService shoppingCartService =
             (ShoppingCartService) INJECTOR.getInstance(ShoppingCartService.class);
@@ -23,8 +24,10 @@ public class AddProductToShoppingCartController extends HttpServlet {
             throws IOException {
 
         String productId = req.getParameter("product_id");
+
         ShoppingCart shoppingCart = shoppingCartService.getByUserId(ShoppingCartController.USER_ID);
-        shoppingCartService.addProduct(shoppingCart, productService.get(Long.parseLong(productId)));
-        resp.sendRedirect(req.getContextPath() + "/products/all");
+        Product product = productService.get(Long.parseLong(productId));
+        shoppingCartService.deleteProduct(shoppingCart, product);
+        resp.sendRedirect(req.getContextPath() + "/shoppingCart");
     }
 }

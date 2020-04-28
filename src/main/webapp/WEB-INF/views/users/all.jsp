@@ -6,11 +6,12 @@
 </head>
 <body>
 <h1>All users</h1>
+<h3><a href="${pageContext.request.contextPath}/">index</a></h3>
 <table border="1">
     <tr>
         <th>ID</th>
         <th>Name</th>
-        <th>Delete</th>
+        <th>Actions</th>
     </tr>
     <c:forEach var="user" items="${users}">
         <tr>
