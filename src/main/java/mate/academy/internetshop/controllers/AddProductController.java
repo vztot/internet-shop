@@ -13,9 +13,9 @@ import mate.academy.internetshop.service.ProductService;
 
 @WebServlet("/products/add")
 public class AddProductController extends HttpServlet {
-    private static final Injector injector = Injector.getInstance("mate.academy.internetshop");
+    private static final Injector INJECTOR = Injector.getInstance("mate.academy.internetshop");
     private ProductService productService =
-            (ProductService) injector.getInstance(ProductService.class);
+            (ProductService) INJECTOR.getInstance(ProductService.class);
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
@@ -29,8 +29,7 @@ public class AddProductController extends HttpServlet {
         String productName = req.getParameter("productName");
         String price = req.getParameter("price");
 
-        if (productName != null && price != null
-                && productName.length() > 0 && price.length() > 0 && price.matches("[0-9]+")) {
+        if (productName != null && price != null && price.matches("[0-9]+")) {
             productService.create(new Product(productName, new BigDecimal(Long.parseLong(price))));
             resp.sendRedirect(req.getContextPath() + "/products/add");
         } else {
