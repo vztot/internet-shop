@@ -1,10 +1,19 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>Index</title>
 </head>
 <body>
-<h1>Hello world!</h1>
-<img src="https://i.imgur.com/W0KnU6F.gif">
+<h1>internet-shop</h1>
+<h3>HW 16:</h3>
+<ul>
+    <li><a href="${pageContext.request.contextPath}/registration">Register new user</a></li>
+    <li><a href="${pageContext.request.contextPath}/users/all">All users</a></li>
+    <br>
+    <li><a href="${pageContext.request.contextPath}/products/add">Add product</a></li>
+    <li><a href="${pageContext.request.contextPath}/products/all">All products</a></li>
+    <br>
+    <li><a href="${pageContext.request.contextPath}/shoppingCart">View shoppingCart of User with 1L Id</a></li>
+</ul>
 </body>
 </html>
