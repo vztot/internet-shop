@@ -25,16 +25,11 @@ public class AddProductController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
-            throws ServletException, IOException {
+            throws IOException {
         String productName = req.getParameter("productName");
         String price = req.getParameter("price");
 
-        if (productName != null && price != null && price.matches("[0-9]+")) {
-            productService.create(new Product(productName, new BigDecimal(Long.parseLong(price))));
-            resp.sendRedirect(req.getContextPath() + "/products/add");
-        } else {
-            req.setAttribute("msg", "Please enter valid product data.");
-            req.getRequestDispatcher("/WEB-INF/views/products/add.jsp").forward(req, resp);
-        }
+        productService.create(new Product(productName, new BigDecimal(Long.parseLong(price))));
+        resp.sendRedirect(req.getContextPath() + "/products/add");
     }
 }
