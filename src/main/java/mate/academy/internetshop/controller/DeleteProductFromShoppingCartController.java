@@ -1,4 +1,4 @@
-package mate.academy.internetshop.controllers;
+package mate.academy.internetshop.controller;
 
 import java.io.IOException;
 import javax.servlet.annotation.WebServlet;
@@ -22,7 +22,6 @@ public class DeleteProductFromShoppingCartController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws IOException {
-
         String productId = req.getParameter("product_id");
 
         ShoppingCart shoppingCart = shoppingCartService.getByUserId(ShoppingCartController.USER_ID);

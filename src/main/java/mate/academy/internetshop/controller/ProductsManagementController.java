@@ -1,4 +1,4 @@
-package mate.academy.internetshop.controllers;
+package mate.academy.internetshop.controller;
 
 import java.io.IOException;
 import java.util.List;
@@ -9,23 +9,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import mate.academy.internetshop.lib.Injector;
 import mate.academy.internetshop.model.Product;
-import mate.academy.internetshop.service.OrderService;
+import mate.academy.internetshop.service.ProductService;
 
-@WebServlet("/orders/view")
-public class GetOrderController extends HttpServlet {
+@WebServlet("/products/management")
+public class ProductsManagementController extends HttpServlet {
     private static final Injector INJECTOR = Injector.getInstance("mate.academy.internetshop");
-    private OrderService orderService = (OrderService) INJECTOR.getInstance(OrderService.class);
+    private ProductService productService =
+            (ProductService) INJECTOR.getInstance(ProductService.class);
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-
-        String orderId = req.getParameter("order_id");
-
-        List<Product> productList = orderService.get(Long.valueOf(orderId)).getProducts();
-
+        List<Product> productList = productService.getAll();
         req.setAttribute("products", productList);
-        req.setAttribute("order_id", orderId);
-        req.getRequestDispatcher("/WEB-INF/views/orders/order.jsp").forward(req, resp);
+        req.getRequestDispatcher("/WEB-INF/views/products/management.jsp").forward(req, resp);
     }
 }
