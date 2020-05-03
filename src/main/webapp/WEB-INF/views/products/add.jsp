@@ -5,7 +5,8 @@
 </head>
 <body>
 <h1>Add product</h1>
-<h3>Please enter new product data</h3>
+<h3><a href="${pageContext.request.contextPath}/">index</a></h3>
+<h4>Please enter new product data</h4>
 <form method="post" action="${pageContext.request.contextPath}/products/add">
     <table>
         <tr>

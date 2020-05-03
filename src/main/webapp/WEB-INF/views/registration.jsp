@@ -5,6 +5,7 @@
 </head>
 <body>
 <h1>Registration</h1>
+<h3><a href="${pageContext.request.contextPath}/">index</a></h3>
 <h3>Please enter new user data</h3>
 <h4 style="color: red">${msg}</h4>
 <form method="post" action="${pageContext.request.contextPath}/registration">
