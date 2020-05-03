@@ -13,6 +13,7 @@ import mate.academy.internetshop.service.UserService;
 
 @WebServlet("/users/all")
 public class UserController extends HttpServlet {
+    private static final String USER_ID = "user_id";
     private static final Injector INJECTOR = Injector.getInstance("mate.academy.internetshop");
     private UserService userService = (UserService) INJECTOR.getInstance(UserService.class);
 
@@ -20,8 +21,13 @@ public class UserController extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
 
-        List<User> userList = userService.getAll();
+        Long userId = (Long) req.getSession().getAttribute(USER_ID);
+        if (userId == null || userService.get(userId) == null) {
+            resp.sendRedirect(req.getContextPath() + "/login");
+            return;
+        }
 
+        List<User> userList = userService.getAll();
         req.setAttribute("users", userList);
         req.getRequestDispatcher("/WEB-INF/views/users/all.jsp").forward(req, resp);
     }
