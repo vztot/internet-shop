@@ -13,8 +13,8 @@ import mate.academy.internetshop.lib.Injector;
 import mate.academy.internetshop.model.Product;
 import mate.academy.internetshop.service.ShoppingCartService;
 
-@WebServlet("/shoppingCart")
-public class ShoppingCartController extends HttpServlet {
+@WebServlet("/shoppingCart/products")
+public class GetShoppingCartController extends HttpServlet {
     private static final String USER_ID = "user_id";
     private static final Injector INJECTOR = Injector.getInstance("mate.academy.internetshop");
     private ShoppingCartService shoppingCartService =

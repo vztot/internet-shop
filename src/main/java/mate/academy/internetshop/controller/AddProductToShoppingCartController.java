@@ -10,7 +10,7 @@ import mate.academy.internetshop.model.ShoppingCart;
 import mate.academy.internetshop.service.ProductService;
 import mate.academy.internetshop.service.ShoppingCartService;
 
-@WebServlet("/shoppingCart/add")
+@WebServlet("/shoppingCart/products/add")
 public class AddProductToShoppingCartController extends HttpServlet {
     private static final String USER_ID = "user_id";
     private static final Injector INJECTOR = Injector.getInstance("mate.academy.internetshop");
