@@ -32,6 +32,6 @@
     </c:forEach>
 </table>
 <br>
-<button onclick="location.href = '${pageContext.request.contextPath}/orders/new?user_id=1'">Buy</button>
+<button onclick="location.href = '${pageContext.request.contextPath}/orders/new'">Buy</button>
 </body>
 </html>
