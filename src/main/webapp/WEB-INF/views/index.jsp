@@ -5,8 +5,10 @@
 </head>
 <body>
 <h1>internet-shop</h1>
-<h3>HW 16.2:</h3>
+<h3>HW 18:</h3>
 <ul>
+    <li><a href="${pageContext.request.contextPath}/login">Login</a></li>
+    <br>
     <li><a href="${pageContext.request.contextPath}/injectFakeData?inject=true">Inject data</a></li>
     <br>
     <li><a href="${pageContext.request.contextPath}/registration">Register new user</a></li>
