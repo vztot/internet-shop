@@ -13,9 +13,9 @@ import mate.academy.internetshop.lib.Injector;
 import mate.academy.internetshop.model.Product;
 import mate.academy.internetshop.service.ShoppingCartService;
 
-@WebServlet("/shoppingCart")
-public class ShoppingCartController extends HttpServlet {
-    public static final Long USER_ID = 1L;
+@WebServlet("/shoppingCart/products")
+public class GetShoppingCartController extends HttpServlet {
+    private static final String USER_ID = "user_id";
     private static final Injector INJECTOR = Injector.getInstance("mate.academy.internetshop");
     private ShoppingCartService shoppingCartService =
             (ShoppingCartService) INJECTOR.getInstance(ShoppingCartService.class);
@@ -23,15 +23,14 @@ public class ShoppingCartController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-
+        Long userId = (Long) req.getSession().getAttribute(USER_ID);
         List<Product> productList = new ArrayList<>();
 
         try {
-            productList = shoppingCartService.getByUserId(USER_ID).getProducts();
+            productList = shoppingCartService.getByUserId(userId).getProducts();
         } catch (NoSuchElementException e) {
             e.printStackTrace();
         }
-
         req.setAttribute("products", productList);
         req.getRequestDispatcher("/WEB-INF/views/shoppingCart.jsp").forward(req, resp);
     }

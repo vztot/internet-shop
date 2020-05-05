@@ -26,12 +26,12 @@
                 <c:out value="${product.price}"/>
             </td>
             <td style="text-align: center">
-                <button onclick="location.href = '${pageContext.request.contextPath}/shoppingCart/delete?product_id=${product.productId}'">delete</button>
+                <button onclick="location.href = '${pageContext.request.contextPath}/shoppingCart/products/delete?product_id=${product.productId}'">delete</button>
             </td>
         </tr>
     </c:forEach>
 </table>
 <br>
-<button onclick="location.href = '${pageContext.request.contextPath}/orders/new?user_id=1'">Buy</button>
+<button onclick="location.href = '${pageContext.request.contextPath}/orders/new'">Buy</button>
 </body>
 </html>

@@ -18,9 +18,9 @@
     <li><a href="${pageContext.request.contextPath}/products/all">All products</a></li>
     <li><a href="${pageContext.request.contextPath}/products/management">Product Management</a></li>
     <br>
-    <li><a href="${pageContext.request.contextPath}/shoppingCart">View shoppingCart of User with 1L Id</a></li>
+    <li><a href="${pageContext.request.contextPath}/shoppingCart/products">My Shopping Cart</a></li>
     <br>
-    <li><a href="${pageContext.request.contextPath}/orders/all">All orders</a></li>
+    <li><a href="${pageContext.request.contextPath}/user/orders">My Orders</a></li>
 </ul>
 </body>
 </html>

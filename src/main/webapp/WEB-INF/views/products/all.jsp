@@ -26,7 +26,7 @@
                 <c:out value="${product.price}"/>
             </td>
             <td style="text-align: center">
-                <button onclick="location.href = '${pageContext.request.contextPath}/shoppingCart/add?product_id=${product.productId}'">add</button>
+                <button onclick="location.href = '${pageContext.request.contextPath}/shoppingCart/products/add?product_id=${product.productId}'">add</button>
             </td>
         </tr>
     </c:forEach>
