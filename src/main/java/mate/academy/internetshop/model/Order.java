@@ -1,6 +1,7 @@
 package mate.academy.internetshop.model;
 
 import java.util.List;
+import java.util.Objects;
 
 public class Order {
     private Long orderId;
@@ -53,19 +54,19 @@ public class Order {
 
         Order order = (Order) o;
 
-        if (orderId != null ? !orderId.equals(order.orderId) : order.orderId != null) {
+        if (!Objects.equals(orderId, order.orderId)) {
             return false;
         }
-        if (user != null ? !user.equals(order.user) : order.user != null) {
+        if (!Objects.equals(user, order.user)) {
             return false;
         }
-        return products != null ? products.equals(order.products) : order.products == null;
+        return Objects.equals(products, order.products);
     }
 
     @Override
     public int hashCode() {
         int result = orderId != null ? orderId.hashCode() : 0;
-        result = 31 * result + (user != null ? user.hashCode() : 0);
+        result = 17 * result + (user != null ? user.hashCode() : 0);
         result = 31 * result + (products != null ? products.hashCode() : 0);
         return result;
     }
