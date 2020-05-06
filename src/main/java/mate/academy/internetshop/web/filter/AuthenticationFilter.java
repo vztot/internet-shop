@@ -7,13 +7,11 @@ import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
-import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import mate.academy.internetshop.lib.Injector;
 import mate.academy.internetshop.service.UserService;
 
-@WebFilter("/*")
 public class AuthenticationFilter implements Filter {
     private static final String USER_ID = "user_id";
     private static final Injector INJECTOR = Injector.getInstance("mate.academy.internetshop");
@@ -24,14 +22,14 @@ public class AuthenticationFilter implements Filter {
     }
 
     @Override
-    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse,
-                         FilterChain filterChain) throws IOException, ServletException {
-        HttpServletRequest req = (HttpServletRequest) servletRequest;
-        HttpServletResponse resp = (HttpServletResponse) servletResponse;
+    public void doFilter(ServletRequest request, ServletResponse response,
+                         FilterChain chain) throws IOException, ServletException {
+        HttpServletRequest req = (HttpServletRequest) request;
+        HttpServletResponse resp = (HttpServletResponse) response;
 
         String url = req.getServletPath();
         if (url.equals("/login") || url.equals("/registration")) {
-            filterChain.doFilter(req, resp);
+            chain.doFilter(req, resp);
             return;
         }
 
@@ -40,7 +38,7 @@ public class AuthenticationFilter implements Filter {
             resp.sendRedirect(req.getContextPath() + "/login");
             return;
         }
-        filterChain.doFilter(req, resp);
+        chain.doFilter(req, resp);
     }
 
     @Override

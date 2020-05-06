@@ -2,12 +2,14 @@ package mate.academy.internetshop.controller;
 
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.util.Set;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import mate.academy.internetshop.lib.Injector;
 import mate.academy.internetshop.model.Product;
+import mate.academy.internetshop.model.Role;
 import mate.academy.internetshop.model.User;
 import mate.academy.internetshop.service.ProductService;
 import mate.academy.internetshop.service.UserService;
@@ -23,12 +25,24 @@ public class InjectFakeDataController extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws IOException {
         if (req.getParameter("inject").equals("true")) {
-            userService.create(new User("Neil Armstrong", "moon17", "neillovesnassa"));
-            userService.create(new User("Leroy Jenkins", "leroooooooy", "jeeeenkins!"));
-            userService.create(new User("Barbara Brilska", "barba12", "654654"));
-            userService.create(new User("John Bobkins", "jobo17", "3216409jobojododojo"));
-            userService.create(new User("Alex", "herastic1999", "supermegadominator4k"));
-            userService.create(new User("Mary", "marrrrrrrrryyyyyyyyaaa", "kittykitty"));
+            userService.create(
+                    new User("Neil Armstrong", "moon17", "neillovesnassa",
+                            Set.of(Role.of("ADMIN"))));
+            userService.create(
+                    new User("Leroy Jenkins", "leroooooooy", "jeeeenkins!",
+                            Set.of(Role.of("USER"))));
+            userService.create(
+                    new User("Barbara Brilska", "barba12", "654654",
+                            Set.of(Role.of("USER"))));
+            userService.create(
+                    new User("John Bobkins", "jobo17", "3216409jobojododojo",
+                            Set.of(Role.of("USER"))));
+            userService.create(
+                    new User("Alex", "herastic1999", "supermegadominator4k",
+                            Set.of(Role.of("USER"))));
+            userService.create(
+                    new User("Mary", "marrrrrrrrryyyyyyyyaaa", "kittykitty",
+                            Set.of(Role.of("USER"))));
 
             productService.create(new Product("Kosmos-3M", new BigDecimal(150_000_000)));
             productService.create(new Product("Falcon Heavy", new BigDecimal(350_000_000)));
