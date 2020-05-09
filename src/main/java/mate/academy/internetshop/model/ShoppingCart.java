@@ -1,6 +1,7 @@
 package mate.academy.internetshop.model;
 
 import java.util.List;
+import java.util.Objects;
 
 public class ShoppingCart {
     private Long shoppingCartId;
@@ -53,20 +54,19 @@ public class ShoppingCart {
 
         ShoppingCart that = (ShoppingCart) o;
 
-        if (shoppingCartId != null ? !shoppingCartId.equals(that.shoppingCartId)
-                : that.shoppingCartId != null) {
+        if (!Objects.equals(shoppingCartId, that.shoppingCartId)) {
             return false;
         }
-        if (user != null ? !user.equals(that.user) : that.user != null) {
+        if (!Objects.equals(user, that.user)) {
             return false;
         }
-        return products != null ? products.equals(that.products) : that.products == null;
+        return Objects.equals(products, that.products);
     }
 
     @Override
     public int hashCode() {
         int result = shoppingCartId != null ? shoppingCartId.hashCode() : 0;
-        result = 31 * result + (user != null ? user.hashCode() : 0);
+        result = 17 * result + (user != null ? user.hashCode() : 0);
         result = 31 * result + (products != null ? products.hashCode() : 0);
         return result;
     }

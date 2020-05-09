@@ -1,5 +1,6 @@
 package mate.academy.internetshop.model;
 
+import java.util.Objects;
 import java.util.Set;
 
 public class User {
@@ -73,23 +74,23 @@ public class User {
 
         User user = (User) o;
 
-        if (userId != null ? !userId.equals(user.userId) : user.userId != null) {
+        if (!Objects.equals(userId, user.userId)) {
             return false;
         }
-        if (name != null ? !name.equals(user.name) : user.name != null) {
+        if (!Objects.equals(name, user.name)) {
             return false;
         }
-        if (login != null ? !login.equals(user.login) : user.login != null) {
+        if (!Objects.equals(login, user.login)) {
             return false;
         }
-        return password != null ? password.equals(user.password) : user.password == null;
+        return Objects.equals(password, user.password);
     }
 
     @Override
     public int hashCode() {
         int result = userId != null ? userId.hashCode() : 0;
-        result = 31 * result + (name != null ? name.hashCode() : 0);
-        result = 31 * result + (login != null ? login.hashCode() : 0);
+        result = 17 * result + (name != null ? name.hashCode() : 0);
+        result = 23 * result + (login != null ? login.hashCode() : 0);
         result = 31 * result + (password != null ? password.hashCode() : 0);
         return result;
     }
