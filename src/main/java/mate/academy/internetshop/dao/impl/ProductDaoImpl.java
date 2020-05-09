@@ -4,10 +4,10 @@ import java.util.List;
 import java.util.Optional;
 import mate.academy.internetshop.dao.ProductDao;
 import mate.academy.internetshop.db.Storage;
-import mate.academy.internetshop.lib.Dao;
+//import mate.academy.internetshop.lib.Dao;
 import mate.academy.internetshop.model.Product;
 
-@Dao
+//@Dao
 public class ProductDaoImpl implements ProductDao {
 
     @Override

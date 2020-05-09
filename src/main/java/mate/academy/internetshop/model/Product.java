@@ -13,6 +13,12 @@ public class Product {
         this.price = price;
     }
 
+    public Product(Long productId, String name, BigDecimal price) {
+        this.productId = productId;
+        this.name = name;
+        this.price = price;
+    }
+
     public Long getProductId() {
         return productId;
     }
