@@ -7,6 +7,9 @@ import java.util.Properties;
 import java.util.TimeZone;
 
 public class ConnectionUtil {
+    private static final String DB_NAME = "internet_shop";
+    private static final String TIMEZONE = TimeZone.getDefault().getID();
+
     static {
         try {
             Class.forName("com.mysql.jdbc.Driver");
@@ -20,9 +23,7 @@ public class ConnectionUtil {
         dbProperties.put("user", "root");
         dbProperties.put("password", "https://www.youtube.com/watch?v=of3i4DUVx2g");
 
-        String dbName = "internet_shop";
-        String timezone = TimeZone.getDefault().getID();
-        String url = "jdbc:mysql://localhost:3306/" + dbName + "?serverTimezone=" + timezone;
+        String url = "jdbc:mysql://localhost:3306/" + DB_NAME + "?serverTimezone=" + TIMEZONE;
         try {
             return DriverManager.getConnection(url, dbProperties);
         } catch (SQLException e) {

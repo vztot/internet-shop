@@ -23,7 +23,7 @@ public class ProductDaoJdbcImpl implements ProductDao {
             String query = "INSERT INTO products (name, price) VALUES (?, ?)";
             PreparedStatement statement = connection.prepareStatement(query,
                     PreparedStatement.RETURN_GENERATED_KEYS);
-            statement.setString(1,product.getName());
+            statement.setString(1, product.getName());
             statement.setBigDecimal(2, product.getPrice());
             statement.executeUpdate();
             ResultSet resultSet = statement.getGeneratedKeys();
@@ -45,10 +45,7 @@ public class ProductDaoJdbcImpl implements ProductDao {
             statement.setLong(1, id);
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
-                Long productId = resultSet.getLong("product_id");
-                String name = resultSet.getString("name");
-                BigDecimal price = resultSet.getBigDecimal("price");
-                return Optional.of(new Product(productId, name, price));
+                return Optional.of(createProductFromResultSet(resultSet));
             }
         } catch (SQLException e) {
             throw new DataProcessingException(e.getMessage());
@@ -64,10 +61,7 @@ public class ProductDaoJdbcImpl implements ProductDao {
             PreparedStatement statement = connection.prepareStatement(query);
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
-                Long productId = resultSet.getLong("product_id");
-                String name = resultSet.getString("name");
-                BigDecimal price = resultSet.getBigDecimal("price");
-                list.add(new Product(productId, name, price));
+                list.add(createProductFromResultSet(resultSet));
             }
             return list;
         } catch (SQLException e) {
@@ -101,5 +95,12 @@ public class ProductDaoJdbcImpl implements ProductDao {
         } catch (SQLException e) {
             throw new DataProcessingException(e.getMessage());
         }
+    }
+
+    private Product createProductFromResultSet(ResultSet resultSet) throws SQLException {
+        Long productId = resultSet.getLong("product_id");
+        String name = resultSet.getString("name");
+        BigDecimal price = resultSet.getBigDecimal("price");
+        return new Product(productId, name, price);
     }
 }
