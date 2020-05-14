@@ -132,7 +132,7 @@ public class OrderDaoJdbcImpl implements OrderDao {
         }
     }
 
-    private Order createOrderFromResultSetAndOrdersProducts(ResultSet resultSet)
+    private Order getOrderFromResultSet(ResultSet resultSet)
             throws SQLException {
         Long orderId = resultSet.getLong("order_id");
         Long userId = resultSet.getLong("user_id");
