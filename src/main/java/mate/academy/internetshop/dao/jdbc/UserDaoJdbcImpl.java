@@ -47,7 +47,7 @@ public class UserDaoJdbcImpl implements UserDao {
             statement.setLong(1, id);
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
-                User user = createUserFromResultSetAndSetRoles(resultSet);
+                User user = getUserFromResultSet(resultSet);
                 return Optional.of(user);
             }
         } catch (SQLException e) {
@@ -64,7 +64,7 @@ public class UserDaoJdbcImpl implements UserDao {
             ResultSet resultSet = statement.executeQuery();
             List<User> list = new ArrayList<>();
             while (resultSet.next()) {
-                User user = createUserFromResultSetAndSetRoles(resultSet);
+                User user = getUserFromResultSet(resultSet);
                 list.add(user);
             }
             return list;
@@ -117,7 +117,7 @@ public class UserDaoJdbcImpl implements UserDao {
             statement.setString(1, login);
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
-                User user = createUserFromResultSetAndSetRoles(resultSet);
+                User user = getUserFromResultSet(resultSet);
                 return Optional.of(user);
             }
         } catch (SQLException e) {
@@ -145,17 +145,17 @@ public class UserDaoJdbcImpl implements UserDao {
         }
     }
 
-    private User createUserFromResultSetAndSetRoles(ResultSet resultSet) throws SQLException {
+    private User getUserFromResultSet(ResultSet resultSet) throws SQLException {
         Long id = resultSet.getLong("user_id");
         String name = resultSet.getString("name");
         String login = resultSet.getString("login");
         String password = resultSet.getString("password");
         User user = new User(id, name, login, password);
-        user.setRoles(createRolesFromUserId(id));
+        user.setRoles(getUserRoles(id));
         return user;
     }
 
-    private Set<Role> createRolesFromUserId(Long userId) throws SQLException {
+    private Set<Role> getUserRoles(Long userId) throws SQLException {
         String query = "SELECT role_name FROM users_roles JOIN roles"
                 + " USING (role_id) WHERE user_id = ?";
         try (Connection connection = ConnectionUtil.getConnection()) {

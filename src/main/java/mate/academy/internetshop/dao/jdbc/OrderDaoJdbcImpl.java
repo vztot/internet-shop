@@ -45,7 +45,7 @@ public class OrderDaoJdbcImpl implements OrderDao {
             statement.setLong(1, id);
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
-                Order order = createOrderFromResultSetAndOrdersProducts(resultSet);
+                Order order = getOrderFromResultSet(resultSet);
                 return Optional.of(order);
             }
         } catch (SQLException e) {
@@ -62,7 +62,7 @@ public class OrderDaoJdbcImpl implements OrderDao {
             ResultSet resultSet = statement.executeQuery();
             List<Order> list = new ArrayList<>();
             while (resultSet.next()) {
-                Order order = createOrderFromResultSetAndOrdersProducts(resultSet);
+                Order order = getOrderFromResultSet(resultSet);
                 list.add(order);
             }
             return list;
@@ -80,7 +80,7 @@ public class OrderDaoJdbcImpl implements OrderDao {
             statement.setLong(1, order.getUserId());
             statement.setLong(2, order.getOrderId());
             statement.executeUpdate();
-            deleteOrderFromOrdersProducts(order.getOrderId());
+            deleteOrderProducts(order.getOrderId());
             insertOrdersProducts(order);
             return order;
         } catch (SQLException e) {
@@ -92,7 +92,7 @@ public class OrderDaoJdbcImpl implements OrderDao {
     public boolean delete(Long id) {
         String query = "DELETE FROM orders WHERE order_id = ?";
         try (Connection connection = ConnectionUtil.getConnection()) {
-            deleteOrderFromOrdersProducts(id);
+            deleteOrderProducts(id);
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setLong(1, id);
             return statement.executeUpdate() != 0;
@@ -110,7 +110,7 @@ public class OrderDaoJdbcImpl implements OrderDao {
             ResultSet resultSet = statement.executeQuery();
             List<Order> list = new ArrayList<>();
             while (resultSet.next()) {
-                list.add(createOrderFromResultSetAndOrdersProducts(resultSet));
+                list.add(getOrderFromResultSet(resultSet));
             }
             return list;
         } catch (SQLException e) {
@@ -132,15 +132,15 @@ public class OrderDaoJdbcImpl implements OrderDao {
         }
     }
 
-    private Order createOrderFromResultSetAndOrdersProducts(ResultSet resultSet)
+    private Order getOrderFromResultSet(ResultSet resultSet)
             throws SQLException {
         Long orderId = resultSet.getLong("order_id");
         Long userId = resultSet.getLong("user_id");
-        Order order = new Order(orderId, createProductListFromOrdersProducts(orderId), userId);
+        Order order = new Order(orderId, getOrderProducts(orderId), userId);
         return order;
     }
 
-    private List<Product> createProductListFromOrdersProducts(Long orderId) throws SQLException {
+    private List<Product> getOrderProducts(Long orderId) throws SQLException {
         String query = "SELECT products.* FROM orders_products "
                 + "JOIN products USING (product_id) WHERE order_id = ?";
         try (Connection connection = ConnectionUtil.getConnection()) {
@@ -159,7 +159,7 @@ public class OrderDaoJdbcImpl implements OrderDao {
         }
     }
 
-    private void deleteOrderFromOrdersProducts(Long orderId) throws SQLException {
+    private void deleteOrderProducts(Long orderId) throws SQLException {
         String query = "DELETE FROM orders_products WHERE order_id = ?";
         try (Connection connection = ConnectionUtil.getConnection()) {
             PreparedStatement statement = connection.prepareStatement(query);

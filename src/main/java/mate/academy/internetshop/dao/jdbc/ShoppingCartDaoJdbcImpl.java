@@ -44,8 +44,8 @@ public class ShoppingCartDaoJdbcImpl implements ShoppingCartDao {
             statement.setLong(1, id);
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
-                ShoppingCart shoppingCart = createShoppingCartFromResultSet(resultSet);
-                shoppingCart.setProducts(createProductListFromShoppingCart(id));
+                ShoppingCart shoppingCart = getShoppingCartFromResultSet(resultSet);
+                shoppingCart.setProducts(getProductsFromShoppingCart(id));
                 return Optional.of(shoppingCart);
             }
             return Optional.empty();
@@ -62,9 +62,9 @@ public class ShoppingCartDaoJdbcImpl implements ShoppingCartDao {
             ResultSet resultSet = statement.executeQuery();
             List<ShoppingCart> list = new ArrayList<>();
             while (resultSet.next()) {
-                ShoppingCart shoppingCart = createShoppingCartFromResultSet(resultSet);
+                ShoppingCart shoppingCart = getShoppingCartFromResultSet(resultSet);
                 shoppingCart.setProducts(
-                        createProductListFromShoppingCart(shoppingCart.getShoppingCartId()));
+                        getProductsFromShoppingCart(shoppingCart.getShoppingCartId()));
                 list.add(shoppingCart);
             }
             return list;
@@ -118,14 +118,14 @@ public class ShoppingCartDaoJdbcImpl implements ShoppingCartDao {
         }
     }
 
-    private ShoppingCart createShoppingCartFromResultSet(ResultSet resultSet) throws SQLException {
+    private ShoppingCart getShoppingCartFromResultSet(ResultSet resultSet) throws SQLException {
         Long cartId = resultSet.getLong("cart_id");
         Long userId = resultSet.getLong("user_id");
         ShoppingCart shoppingCart = new ShoppingCart(cartId, userId);
         return shoppingCart;
     }
 
-    private List<Product> createProductListFromShoppingCart(Long shoppingCartId)
+    private List<Product> getProductsFromShoppingCart(Long shoppingCartId)
             throws SQLException {
         String query = "SELECT products.* FROM shopping_carts_products "
                 + "JOIN products USING (product_id) WHERE cart_id = ?";
