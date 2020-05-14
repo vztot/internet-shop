@@ -23,7 +23,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public User create(User user) {
         User newUser = userDao.create(user);
-        shoppingCartService.create(new ShoppingCart(newUser, new ArrayList<Product>()));
+        shoppingCartService.create(new ShoppingCart(newUser.getUserId(), new ArrayList<Product>()));
         return newUser;
     }
 

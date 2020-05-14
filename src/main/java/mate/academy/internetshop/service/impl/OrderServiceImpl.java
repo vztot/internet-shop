@@ -20,9 +20,9 @@ public class OrderServiceImpl implements OrderService {
     private ShoppingCartService shoppingCartService;
 
     @Override
-    public Order completeOrder(List<Product> products, User user) {
-        shoppingCartService.clear(shoppingCartService.getByUserId(user.getUserId()));
-        return orderDao.create(new Order(products, user));
+    public Order completeOrder(List<Product> products, Long userId) {
+        shoppingCartService.clear(shoppingCartService.getByUserId(userId));
+        return orderDao.create(new Order(products, userId));
     }
 
     @Override

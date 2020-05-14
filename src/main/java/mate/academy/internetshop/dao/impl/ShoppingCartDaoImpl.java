@@ -4,10 +4,8 @@ import java.util.List;
 import java.util.Optional;
 import mate.academy.internetshop.dao.ShoppingCartDao;
 import mate.academy.internetshop.db.Storage;
-import mate.academy.internetshop.lib.Dao;
 import mate.academy.internetshop.model.ShoppingCart;
 
-@Dao
 public class ShoppingCartDaoImpl implements ShoppingCartDao {
 
     @Override
@@ -34,7 +32,7 @@ public class ShoppingCartDaoImpl implements ShoppingCartDao {
                 .get();
 
         shoppingCartThatNeedUpdate.setProducts(shoppingCart.getProducts());
-        shoppingCartThatNeedUpdate.setUser(shoppingCart.getUser());
+        shoppingCartThatNeedUpdate.setUserId(shoppingCart.getUserId());
         return shoppingCartThatNeedUpdate;
     }
 

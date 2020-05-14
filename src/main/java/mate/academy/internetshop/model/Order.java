@@ -5,11 +5,17 @@ import java.util.Objects;
 
 public class Order {
     private Long orderId;
-    private User user;
+    private Long userId;
     private List<Product> products;
 
-    public Order(List<Product> products, User user) {
-        this.user = user;
+    public Order(List<Product> products, Long userId) {
+        this.userId = userId;
+        this.products = products;
+    }
+
+    public Order(Long orderId, List<Product> products, Long userId) {
+        this.orderId = orderId;
+        this.userId = userId;
         this.products = products;
     }
 
@@ -21,12 +27,12 @@ public class Order {
         this.orderId = orderId;
     }
 
-    public User getUser() {
-        return user;
+    public Long getUserId() {
+        return userId;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 
     public List<Product> getProducts() {
@@ -39,8 +45,10 @@ public class Order {
 
     @Override
     public String toString() {
-        return "Order{" + "orderId=" + orderId + ", user="
-                + user + ", products=" + products + '}';
+        return "Order{"
+                + "orderId=" + orderId
+                + ", userId=" + userId
+                + ", products=" + products + '}';
     }
 
     @Override
@@ -51,23 +59,14 @@ public class Order {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-
         Order order = (Order) o;
-
-        if (!Objects.equals(orderId, order.orderId)) {
-            return false;
-        }
-        if (!Objects.equals(user, order.user)) {
-            return false;
-        }
-        return Objects.equals(products, order.products);
+        return Objects.equals(orderId, order.orderId)
+                && Objects.equals(userId, order.userId)
+                && Objects.equals(products, order.products);
     }
 
     @Override
     public int hashCode() {
-        int result = orderId != null ? orderId.hashCode() : 0;
-        result = 17 * result + (user != null ? user.hashCode() : 0);
-        result = 31 * result + (products != null ? products.hashCode() : 0);
-        return result;
+        return Objects.hash(orderId, userId, products);
     }
 }
