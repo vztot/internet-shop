@@ -10,7 +10,7 @@
 <table border="1">
     <tr>
         <th>Id</th>
-        <th>User</th>
+        <th>UserId</th>
         <th>Actions</th>
     </tr>
     <c:forEach var="order" items="${orders}">
@@ -19,7 +19,7 @@
                 <c:out value="${order.orderId}"/>
             </td>
             <td>
-                <c:out value="${order.user.name}"/>
+                <c:out value="${order.userId}"/>
             </td>
             <td style="text-align: center">
                 <button onclick="location.href = '${pageContext.request.contextPath}/orders/view?order_id=${order.orderId}'">view</button>

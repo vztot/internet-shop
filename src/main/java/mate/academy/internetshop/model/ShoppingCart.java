@@ -1,15 +1,28 @@
 package mate.academy.internetshop.model;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 public class ShoppingCart {
     private Long shoppingCartId;
-    private User user;
+    private Long userId;
     private List<Product> products;
 
-    public ShoppingCart(User user, List<Product> products) {
-        this.user = user;
+    public ShoppingCart(Long userId, List<Product> products) {
+        this.userId = userId;
+        this.products = products;
+    }
+
+    public ShoppingCart(Long shoppingCartId, Long userId) {
+        this.shoppingCartId = shoppingCartId;
+        this.userId = userId;
+        this.products = new ArrayList<Product>();
+    }
+
+    public ShoppingCart(Long shoppingCartId, Long userId, List<Product> products) {
+        this.shoppingCartId = shoppingCartId;
+        this.userId = userId;
         this.products = products;
     }
 
@@ -21,12 +34,12 @@ public class ShoppingCart {
         this.shoppingCartId = shoppingCartId;
     }
 
-    public User getUser() {
-        return user;
+    public Long getUserId() {
+        return userId;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 
     public List<Product> getProducts() {
@@ -39,8 +52,10 @@ public class ShoppingCart {
 
     @Override
     public String toString() {
-        return "ShoppingCart{" + "shoppingCartId=" + shoppingCartId
-                + ", user=" + user + ", products=" + products + '}';
+        return "ShoppingCart{"
+                + "shoppingCartId=" + shoppingCartId
+                + ", userId=" + userId
+                + ", products=" + products + '}';
     }
 
     @Override
@@ -51,23 +66,14 @@ public class ShoppingCart {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-
         ShoppingCart that = (ShoppingCart) o;
-
-        if (!Objects.equals(shoppingCartId, that.shoppingCartId)) {
-            return false;
-        }
-        if (!Objects.equals(user, that.user)) {
-            return false;
-        }
-        return Objects.equals(products, that.products);
+        return Objects.equals(shoppingCartId, that.shoppingCartId)
+                && Objects.equals(userId, that.userId)
+                && Objects.equals(products, that.products);
     }
 
     @Override
     public int hashCode() {
-        int result = shoppingCartId != null ? shoppingCartId.hashCode() : 0;
-        result = 17 * result + (user != null ? user.hashCode() : 0);
-        result = 31 * result + (products != null ? products.hashCode() : 0);
-        return result;
+        return Objects.hash(shoppingCartId, userId, products);
     }
 }
