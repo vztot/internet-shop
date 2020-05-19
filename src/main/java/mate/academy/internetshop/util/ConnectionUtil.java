@@ -21,7 +21,7 @@ public class ConnectionUtil {
     public static Connection getConnection() {
         Properties dbProperties = new Properties();
         dbProperties.put("user", "root");
-        dbProperties.put("password", "https://www.youtube.com/watch?v=UOkpO--XtH0");
+        dbProperties.put("password", "2164092");
 
         String url = "jdbc:mysql://localhost:3306/" + DB_NAME + "?serverTimezone=" + TIMEZONE;
         try {

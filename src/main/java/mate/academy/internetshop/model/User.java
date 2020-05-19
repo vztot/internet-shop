@@ -1,5 +1,6 @@
 package mate.academy.internetshop.model;
 
+import java.util.Arrays;
 import java.util.Objects;
 import java.util.Set;
 
@@ -8,6 +9,7 @@ public class User {
     private String name;
     private String login;
     private String password;
+    private byte[] salt;
     private Set<Role> roles;
 
     public User(String name, String login, String password, Set<Role> roles) {
@@ -64,13 +66,20 @@ public class User {
         this.roles = roles;
     }
 
+    public byte[] getSalt() {
+        return salt;
+    }
+
+    public void setSalt(byte[] salt) {
+        this.salt = salt;
+    }
+
     @Override
     public String toString() {
         return "User{"
                 + "userId=" + userId
                 + ", name='" + name + '\''
                 + ", login='" + login + '\''
-                + ", password='" + password + '\''
                 + ", roles=" + roles + '}';
     }
 
@@ -82,27 +91,19 @@ public class User {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-
         User user = (User) o;
-
-        if (!Objects.equals(userId, user.userId)) {
-            return false;
-        }
-        if (!Objects.equals(name, user.name)) {
-            return false;
-        }
-        if (!Objects.equals(login, user.login)) {
-            return false;
-        }
-        return Objects.equals(password, user.password);
+        return Objects.equals(userId, user.userId)
+                && Objects.equals(name, user.name)
+                && Objects.equals(login, user.login)
+                && Objects.equals(password, user.password)
+                && Arrays.equals(salt, user.salt)
+                && Objects.equals(roles, user.roles);
     }
 
     @Override
     public int hashCode() {
-        int result = userId != null ? userId.hashCode() : 0;
-        result = 17 * result + (name != null ? name.hashCode() : 0);
-        result = 23 * result + (login != null ? login.hashCode() : 0);
-        result = 31 * result + (password != null ? password.hashCode() : 0);
+        int result = Objects.hash(userId, name, login, password, roles);
+        result = 31 * result + Arrays.hashCode(salt);
         return result;
     }
 }

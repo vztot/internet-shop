@@ -11,6 +11,7 @@ import mate.academy.internetshop.model.ShoppingCart;
 import mate.academy.internetshop.model.User;
 import mate.academy.internetshop.service.ShoppingCartService;
 import mate.academy.internetshop.service.UserService;
+import mate.academy.internetshop.util.HashUtil;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -22,6 +23,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User create(User user) {
+        user.setSalt(HashUtil.getSalt());
+        user.setPassword(HashUtil.hashPassword(user.getPassword(), user.getSalt()));
         User newUser = userDao.create(user);
         shoppingCartService.create(new ShoppingCart(newUser.getUserId(), new ArrayList<Product>()));
         return newUser;
