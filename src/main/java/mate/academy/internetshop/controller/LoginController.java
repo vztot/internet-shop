@@ -29,7 +29,6 @@ public class LoginController extends HttpServlet {
             throws ServletException, IOException {
         String login = req.getParameter("login");
         String pwd = req.getParameter("pwd");
-
         try {
             User user = authService.login(login, pwd);
             HttpSession session = req.getSession();

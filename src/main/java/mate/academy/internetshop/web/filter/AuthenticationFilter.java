@@ -18,7 +18,7 @@ public class AuthenticationFilter implements Filter {
     private UserService userService = (UserService) INJECTOR.getInstance(UserService.class);
 
     @Override
-    public void init(FilterConfig filterConfig) throws ServletException {
+    public void init(FilterConfig filterConfig) {
     }
 
     @Override
@@ -26,13 +26,11 @@ public class AuthenticationFilter implements Filter {
                          FilterChain chain) throws IOException, ServletException {
         HttpServletRequest req = (HttpServletRequest) request;
         HttpServletResponse resp = (HttpServletResponse) response;
-
         String url = req.getServletPath();
         if (url.equals("/login") || url.equals("/registration")) {
             chain.doFilter(req, resp);
             return;
         }
-
         Long userId = (Long) req.getSession().getAttribute(USER_ID);
         if (userId == null || userService.get(userId) == null) {
             resp.sendRedirect(req.getContextPath() + "/login");
