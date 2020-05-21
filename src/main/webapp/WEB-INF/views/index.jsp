@@ -5,7 +5,7 @@
 </head>
 <body>
 <h1>internet-shop</h1>
-<h3>HW 19:</h3>
+<h3>index page</h3>
 <ul>
     <li><a href="${pageContext.request.contextPath}/login">Login</a></li>
     <li><a href="${pageContext.request.contextPath}/logout">Logout</a></li>

@@ -13,7 +13,6 @@ import mate.academy.internetshop.service.UserService;
 
 @WebServlet("/users/all")
 public class UserController extends HttpServlet {
-    private static final String USER_ID = "user_id";
     private static final Injector INJECTOR = Injector.getInstance("mate.academy.internetshop");
     private UserService userService = (UserService) INJECTOR.getInstance(UserService.class);
 
