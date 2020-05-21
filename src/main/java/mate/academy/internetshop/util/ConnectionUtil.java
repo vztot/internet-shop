@@ -22,7 +22,7 @@ public class ConnectionUtil {
         Properties dbProperties = new Properties();
         dbProperties.put("user", "root");
         dbProperties.put("password",
-                "aHR0cHM6Ly93d3cueW91dHViZS5jb20vd2F0Y2g/dj1MS3lvZVF3QnpBWQ==");
+                "2164092");
         String url = "jdbc:mysql://localhost:3306/" + DB_NAME + "?serverTimezone=" + TIMEZONE;
         try {
             return DriverManager.getConnection(url, dbProperties);

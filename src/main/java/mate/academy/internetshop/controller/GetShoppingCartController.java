@@ -22,15 +22,10 @@ public class GetShoppingCartController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
-            throws ServletException, IOException {
+            throws ServletException, IOException, NoSuchElementException {
         Long userId = (Long) req.getSession().getAttribute(USER_ID);
         List<Product> productList = new ArrayList<>();
-
-        try {
-            productList = shoppingCartService.getByUserId(userId).getProducts();
-        } catch (NoSuchElementException e) {
-            e.printStackTrace();
-        }
+        productList = shoppingCartService.getByUserId(userId).getProducts();
         req.setAttribute("products", productList);
         req.getRequestDispatcher("/WEB-INF/views/shoppingCart.jsp").forward(req, resp);
     }
