@@ -13,6 +13,10 @@
         <maven.checkstyle.plugin.configLocation>
             https://raw.githubusercontent.com/mate-academy/style-guides/master/java/checkstyle.xml
         </maven.checkstyle.plugin.configLocation>
+        <sonar.projectKey>vztot_internet-shop</sonar.projectKey>
+        <sonar.organization>vztot-1</sonar.organization>
+        <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+        <sonar.login>15ec421ac609d7a32b1c0aa25e0cedae6834699e</sonar.login>
     </properties>
     <dependencies>
         <dependency>
