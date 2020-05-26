@@ -14,13 +14,6 @@
             https://raw.githubusercontent.com/mate-academy/style-guides/master/java/checkstyle.xml
         </maven.checkstyle.plugin.configLocation>
     </properties>
-
-    <properties>
-        <sonar.projectKey>vztot_hibernate-cinema</sonar.projectKey>
-        <sonar.organization>vztot</sonar.organization>
-        <sonar.host.url>https://sonarcloud.io</sonar.host.url>
-        <sonar.login>f7f430d1971ea9911a244c1cdb490242578ee4ee</sonar.login>
-    </properties>
     <dependencies>
         <dependency>
             <groupId>javax.servlet</groupId>
