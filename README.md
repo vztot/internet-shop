@@ -58,7 +58,7 @@ At /jv-internet-shop/src/main/java/mate/academy/internetshop/util/ConnectionUtil
 Change a path in /jv-internet-shop/src/main/resources/log4j.properties. It has to reach your logFile.
 
 Configure SonarQube:
-*
+* Generate proper token via "travis encrypt --pro **************[sonarcu]"
 
 Run the project.
 
