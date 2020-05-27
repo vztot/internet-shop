@@ -47,15 +47,18 @@ Open the project in your IDE (add it as maven project).
 
 Configure Tomcat:
 * add artifact
-* add sdk 11.0.3
+* add sdk 11 or above
 
-Add sdk 11.0.3 in project structure.
+Add sdk 11 or above in project structure.
 
 Use file /jv-internet-shop/src/main/resources/init_db.sql to create the schema and all the tables required by this app in MySQL database.
 
 At /jv-internet-shop/src/main/java/mate/academy/internetshop/util/ConnectionUtil.java class use username and password for your DB to create a Connection.
 
 Change a path in /jv-internet-shop/src/main/resources/log4j.properties. It has to reach your logFile.
+
+Configure SonarQube:
+*
 
 Run the project.
 
