@@ -1,6 +1,8 @@
 language: java
 jdk:
   - openjdk11
+script:
+  - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.projectKey=vztot_internet-shop
 
 cache:
   directories:
@@ -10,8 +12,4 @@ addons:
   sonarcloud:
     organization: "vztot-1"
     token:
-      secure: "AphjY30xqtMoXh9tN8rdU6wIm8Q0w68jP7M+4SUR5DkDrUajU75Ghl5ftM6lGkwUDPGRwNvVSrlOKvpY3nnlIDfthDt0WyxXXtxTgZuF2SpK8haSSzxpEe7xzFPqutfOdWbd12PmkwZhCYtKRzjCOwO2/fMlH7icydDTj3DDbkpcuWudhv9qnyZvcpecB6PnNSlhpk8tCpa8ORkdgc64O3F+C5Js6SclAK6t8F4HvtISYAOfdSzxu9CCSAEYCnjYxFWo+TC4KkPyTs9OnC5dj08XY/E/48TGKg0sNzW7fGNnNG0a+w0t0XgHDs1+OgTMDcsPX69owTyg5TzoUpbGDvn/7VBTWTcZ+5APr9QKelGF0oIpcNCV+mzixf1zjX/4hMS16Q8R6pnINEBfE+0enOLgsoOEBnx+CPndBEbwDf0UAUiqV4ISUvKUnQzKxUv8TuRNx1lwa6R9nOa4EwkM92Iq6dP+2yzefWDdYg4J0zVhJiRJkbjRSbVX/QLkWOh3mYsoae76Ux66rKyxHAfeciw/P3ay7z20Vim4x8RI5q57P0pZIalib53Gno/V/X3stQk74kdil1hfP+Z194IVeQt14bZja296kFAnwy5MkU2y8Ln3AtTmV0b8S4GcQQPp0TEAceTo6InpG09UILblDUcDdto0RwO2fIUjxP6qVUE="
-
-script:
-  # the following command line builds the project, runs the tests with coverage and then execute the SonarCloud analysis
-  - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.projectKey=vztot_internet-shop
+      secure: ${{ secrets.SONAR_QUBE_INTERNET_SHOP_TOKEN }}
