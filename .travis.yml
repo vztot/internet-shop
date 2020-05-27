@@ -12,4 +12,4 @@ addons:
   sonarcloud:
     organization: "vztot-1"
     token:
-      secure: ${{ secrets.SONAR_QUBE_INTERNET_SHOP_TOKEN }}
+      secure: "K9fkuSVv8ad0t134TREr6wKlov9tVUlCz1vMJ6ArmxIAaGm1X1Iqfif7RMm4qtexQy3rQMJX0QrVAji4bomgoErgkDPqJoT3TkhQLz69SFfpqqbRSdtJuuzV27ddK3RAlKynC8zyjYqGPW4JYXfVq2pYbF6kO6DZeBbkYow6cWIMcWwqRTVO5mtNN1lmAF2bOGMzL4DzlGG5AoBerqzV2xtOzO1//DE45dHg2CppQCCLdJvFScyPf/RENz88rCLX5ZkcTn1hHsChWclxDvv1/oSy9bVLJRKPV1qccY82/08GUIotzsCxWXQl16ndEVinp46epAr14mBTQBgNHV8oKTI2xnVcPnX2/lDUiJGOoEerbwREwTuHcQmJyviInt0tpQntBFvOHtf+0M7EUNfHhkfnbncgP1m9IVsFeX/pPno3p5InezGDo7UO+krJx0V07EaEhqeskvBt5kQNVJTtqKqrb8rubA600gzn3At8rPNXM/XFxmq57RT5nNAnRZTv47DmS1PRF4CMWnwYpnZRRvdDgKec9+aVp6BC/2uE5nxownKjKMBrud1JQciFrXFHQCEnGgm1M7zrzCmX3LZbIjqrFH83jP7g/0UnaF1PZgCkNEpIBcxoZF+JTHqce0e93e84i4drjMGORukb9Dka4yrWyARR/s+4/IKLnvDVzMw="
