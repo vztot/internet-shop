@@ -12,8 +12,6 @@
 This is a template for creating an e-store. It implements typical functions for an online store. It has login and registration forms.
 
 Available functions for all users:
-* view menu of the store
-* view items of the store
 * registration
 * log in
 * log out
@@ -40,6 +38,7 @@ Available functions for users with an ADMIN role only:
 * Log4j 1.2.17
 * Maven Checkstyle Plugin
 * Mysql Connector Java 8.0.18
+* SonarQube 1.2
 
 ## For developer
 
@@ -58,13 +57,13 @@ At /jv-internet-shop/src/main/java/mate/academy/internetshop/util/ConnectionUtil
 Change a path in /jv-internet-shop/src/main/resources/log4j.properties. It has to reach your logFile.
 
 Configure SonarQube:
-* Add github project to sonarcloud.io and choose travis in "analysis method".
-* Generate proper token via "travis encrypt --pro [given token on sonarcloud.io]".
-* Add generated token via travis to ".travis.yml" file.
+* add github project to sonarcloud.io and choose travis in "analysis method"
+* generate proper token via "travis encrypt --pro [given token on sonarcloud.io]"
+* add generated token via travis to ".travis.yml" file
 
 Run the project.
 
-If you first time launch this project: Register new user and run InjectDefaultUsersController by URL = .../internet_shop_war_exploded/injectFakeData to create default users and products.
+If you first time launch this project: register new user and run InjectDefaultUsersController by URL = .../internet_shop_war_exploded/injectFakeData to create default users and products.
 
 ## Author
 
