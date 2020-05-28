@@ -1,5 +1,7 @@
 # Internet-shop [![Build Status](https://travis-ci.com/vztot/internet-shop.svg?branch=master)](https://travis-ci.com/vztot/internet-shop)
 
+![gif](doc/img/sign-in.gif)
+
 ## Table of Contents
 
 * [Project purpose](#project-purpose)
@@ -39,6 +41,7 @@ Available functions for users with an ADMIN role only:
 * Maven Checkstyle Plugin
 * Mysql Connector Java 8.0.18
 * SonarQube 1.2
+* Bootstrap
 
 ## For developer
 
@@ -46,9 +49,9 @@ Open the project in your IDE (add it as maven project).
 
 Configure Tomcat:
 * add artifact
-* add sdk 11 or above
+* add SDK 11 or above
 
-Add sdk 11 or above in project structure.
+Add SDK 11 or above in project structure.
 
 Use file /jv-internet-shop/src/main/resources/init_db.sql to create the schema and all the tables required by this app in MySQL database.
 
@@ -57,6 +60,8 @@ At /jv-internet-shop/src/main/java/mate/academy/internetshop/util/ConnectionUtil
 Change a path in /jv-internet-shop/src/main/resources/log4j.properties. It has to reach your logFile.
 
 Configure SonarQube:
+* install gem
+* run "gem install travis"
 * add github project to sonarcloud.io and choose travis in "analysis method"
 * generate proper token via "travis encrypt --pro [given token on sonarcloud.io]"
 * add generated token via travis to ".travis.yml" file

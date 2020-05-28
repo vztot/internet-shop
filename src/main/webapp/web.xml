@@ -4,6 +4,7 @@
          http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
 
+
     <filter>
         <filter-name>authenticationFilter</filter-name>
         <filter-class>mate.academy.internetshop.web.filter.AuthenticationFilter</filter-class>
