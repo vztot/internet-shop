@@ -28,7 +28,6 @@
         * {
             box-sizing: border-box;
         }
-
         .video-background {
             background: #000;
             position: fixed;
@@ -38,7 +37,6 @@
             left: 0;
             z-index: -99;
         }
-
         .video-foreground,
         .video-background iframe {
             position: absolute;
@@ -55,14 +53,12 @@
                 top: -100%;
             }
         }
-
         @media (max-aspect-ratio: 16/9) {
             .video-foreground {
                 width: 300%;
                 left: -100%;
             }
         }
-
         @media all and (max-width: 600px) {
             .vid-info {
                 width: 50%;
@@ -73,7 +69,6 @@
                 margin-bottom: .2rem;
             }
         }
-
         @media all and (max-width: 500px) {
             .vid-info .acronym {
                 display: none;
