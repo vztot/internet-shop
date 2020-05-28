@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <!doctype html>
@@ -17,6 +18,8 @@
 
     <!-- Custom styles for this template -->
     <link href="https://getbootstrap.com/docs/4.0/examples/carousel/carousel.css" rel="stylesheet">
+
+
 
 </head>
 <body>
@@ -41,16 +44,25 @@
                 <li class="nav-item">
                     <a class="nav-link" href="${pageContext.request.contextPath}/user/orders">Orders</a>
                 </li>
-                <li class="nav-item dropdown">
-                    <a href="" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Admin</a>
-                    <div class="dropdown-menu" aria-labelledby="dropdown01">
-                        <a class="dropdown-item" href="${pageContext.request.contextPath}/injectFakeData?inject=true">Inject Data</a>
-                        <a class="dropdown-item" href="${pageContext.request.contextPath}/users/all">Users management</a>
-                        <a class="dropdown-item" href="${pageContext.request.contextPath}/products/management">Products management</a>
-                    </div>
-                </li>
+
+                <c:choose>
+                    <c:when test="${user_id == 20}">
+                        <li class="nav-item dropdown">
+                            <a href="" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Admin</a>
+                            <div class="dropdown-menu" aria-labelledby="dropdown01">
+                                <a class="dropdown-item" href="${pageContext.request.contextPath}/injectFakeData?inject=true">Inject Data</a>
+                                <a class="dropdown-item" href="${pageContext.request.contextPath}/users/all">Users management</a>
+                                <a class="dropdown-item" href="${pageContext.request.contextPath}/products/management">Products management</a>
+                            </div>
+                        </li>
+                    </c:when>
+                    <c:otherwise>
+
+                    </c:otherwise>
+                </c:choose>
             </ul>
             <form class="form-inline mt-2 mt-md-0">
+                <span class="navbar-text text-body mr-3">Welcome, ${user_name}</span>
                 <button type="button" class="btn btn-outline-success my-2 my-sm-0" onclick="location.href = '${pageContext.request.contextPath}/logout'">Logout</button>
             </form>
         </div>
