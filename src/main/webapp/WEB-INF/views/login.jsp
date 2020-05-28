@@ -19,7 +19,7 @@
     <!-- Video Background -->
     <div class="video-background">
         <div class="video-foreground">
-            <iframe src="https://www.youtube.com/embed/l5XrEvFbTwc?autoplay=1&mute=1&controls=0&showinfo=0&rel=0&loop=1&playlist=l5XrEvFbTwc"
+            <iframe title="Video cover" src="https://www.youtube.com/embed/l5XrEvFbTwc?autoplay=1&mute=1&controls=0&showinfo=0&rel=0&loop=1&playlist=l5XrEvFbTwc"
                     frameborder="0" allowfullscreen></iframe>
         </div>
     </div>
