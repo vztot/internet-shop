@@ -55,6 +55,8 @@ Add SDK 11 or above in project structure.
 
 Add lombok plugin to your IDE.
 
+Install MySQL.
+
 Use file /jv-internet-shop/src/main/resources/init_db.sql to create the schema and all the tables required by this app in MySQL database.
 
 At /jv-internet-shop/src/main/java/mate/academy/internetshop/util/ConnectionUtil.java class use username and password for your DB to create a Connection.
