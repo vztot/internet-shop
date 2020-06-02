@@ -19,7 +19,8 @@
     <!-- Video Background -->
     <div class="video-background">
         <div class="video-foreground">
-            <iframe title="Video cover" src="https://www.youtube.com/embed/l5XrEvFbTwc?autoplay=1&mute=1&controls=0&showinfo=0&rel=0&loop=1&playlist=l5XrEvFbTwc"
+            <iframe title="Video cover"
+                    src="https://www.youtube.com/embed/l5XrEvFbTwc?autoplay=1&mute=1&controls=0&showinfo=0&rel=0&loop=1&playlist=l5XrEvFbTwc"
                     frameborder="0" allowfullscreen></iframe>
         </div>
     </div>
@@ -28,6 +29,7 @@
         * {
             box-sizing: border-box;
         }
+
         .video-background {
             background: #000;
             position: fixed;
@@ -37,6 +39,7 @@
             left: 0;
             z-index: -99;
         }
+
         .video-foreground,
         .video-background iframe {
             position: absolute;
@@ -53,12 +56,14 @@
                 top: -100%;
             }
         }
+
         @media (max-aspect-ratio: 16/9) {
             .video-foreground {
                 width: 300%;
                 left: -100%;
             }
         }
+
         @media all and (max-width: 600px) {
             .vid-info {
                 width: 50%;
@@ -69,6 +74,7 @@
                 margin-bottom: .2rem;
             }
         }
+
         @media all and (max-width: 500px) {
             .vid-info .acronym {
                 display: none;
@@ -81,12 +87,15 @@
 <form class="form-signin" method="post" action="${pageContext.request.contextPath}/login">
     <h1 class="h3 mb-3 font-weight-normal" style="color: #efefef">Sign in</h1>
     <label for="inputEmail" class="sr-only">Email address</label>
-    <input type="text" name="login" id="inputEmail" class="form-control" placeholder="Login" required autofocus>
+    <input type="text" name="login" id="inputEmail" class="form-control" placeholder="Login"
+           required autofocus>
     <label for="inputPassword" class="sr-only">Password</label>
-    <input type="password" name="pwd" id="inputPassword" class="form-control" placeholder="Password" required>
+    <input type="password" name="pwd" id="inputPassword" class="form-control" placeholder="Password"
+           required>
     <div class="checkbox mb-3">
         <p style="color: #ff0000">${errorMsg}</p>
-        <p><a href="${pageContext.request.contextPath}/registration">Don't have an account? Sign up here</a></p>
+        <p><a href="${pageContext.request.contextPath}/registration">Don't have an account? Sign up
+            here</a></p>
     </div>
     <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
     <p class="mt-5 mb-3" style="color: #efefef">&copy; rocket-shop 2020</p>

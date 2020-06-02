@@ -26,7 +26,7 @@ public class InjectFakeDataController extends HttpServlet {
             throws IOException {
         if (req.getParameter("inject").equals("true")) {
             userService.create(
-                    new User("admin", "a", "a",
+                    new User("admin", "admin", "2164092",
                             Set.of(Role.of("ADMIN"))));
             userService.create(
                     new User("Leroy Jenkins", "leroooooooy", "jeeeenkins!",
