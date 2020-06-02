@@ -14,16 +14,15 @@
 This is a template for creating an e-store. It implements typical functions for an online store. It has login and registration forms.
 
 Available functions for all users:
-* registration
-* log in
-* log out
+* sign in
+* sign up
 
 Available functions for users with a USER role only:
 * add to user's bucket
 * delete from user's bucket
 * view all user's orders
 * complete order
-* view a lists of selected items in user`s bucket
+* view lists of selected items in user`s bucket
 
 Available functions for users with an ADMIN role only:
 * add items to the store
@@ -76,4 +75,4 @@ If you first time launch this project: register new user and run InjectDefaultUs
 
 ## Author
 
-[Oleksandr Husenko](https://github.com/vztot)
+[Oleksandr Husenko](https://www.linkedin.com/in/oleksandr-husenko-6a63a2b3/)
