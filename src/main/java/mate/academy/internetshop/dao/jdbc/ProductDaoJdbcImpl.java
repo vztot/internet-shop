@@ -91,9 +91,29 @@ public class ProductDaoJdbcImpl implements ProductDao {
         try (Connection connection = ConnectionUtil.getConnection()) {
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setLong(1, id);
+            deleteOrdersProducts(id);
+            deleteShoppingCartsProducts(id);
             return statement.executeUpdate() != 0;
         } catch (SQLException e) {
             throw new DataProcessingException(e);
+        }
+    }
+
+    private void deleteOrdersProducts(Long productId) throws SQLException {
+        String query = "DELETE FROM orders_products WHERE product_id = ?";
+        try (Connection connection = ConnectionUtil.getConnection()) {
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setLong(1, productId);
+            statement.executeUpdate();
+        }
+    }
+
+    private void deleteShoppingCartsProducts(Long productId) throws SQLException {
+        String query = "DELETE FROM shopping_carts_products WHERE product_id = ?";
+        try (Connection connection = ConnectionUtil.getConnection()) {
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setLong(1, productId);
+            statement.executeUpdate();
         }
     }
 

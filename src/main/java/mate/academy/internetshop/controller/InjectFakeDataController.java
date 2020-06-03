@@ -26,9 +26,6 @@ public class InjectFakeDataController extends HttpServlet {
             throws IOException {
         if (req.getParameter("inject").equals("true")) {
             userService.create(
-                    new User("admin", "a", "a",
-                            Set.of(Role.of("ADMIN"))));
-            userService.create(
                     new User("Leroy Jenkins", "leroooooooy", "jeeeenkins!",
                             Set.of(Role.of("USER"))));
             userService.create(
@@ -43,7 +40,6 @@ public class InjectFakeDataController extends HttpServlet {
             userService.create(
                     new User("Mary", "marrrrrrrrryyyyyyyyaaa", "kittykitty",
                             Set.of(Role.of("USER"))));
-
             productService.create(new Product("Kosmos-3M", new BigDecimal(150_000_000)));
             productService.create(new Product("Falcon Heavy", new BigDecimal(350_000_000)));
             productService.create(new Product("Buran", new BigDecimal(75_000_000)));

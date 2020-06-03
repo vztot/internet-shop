@@ -26,12 +26,11 @@ public class AuthorizationFilter implements Filter {
     private Map<String, Set<Role.RoleName>> protectedUrls = new HashMap<>();
 
     @Override
-    public void init(FilterConfig filterConfig) throws ServletException {
+    public void init(FilterConfig filterConfig) {
         protectedUrls.put("/users/all", Set.of(Role.RoleName.ADMIN));
         protectedUrls.put("/products/management", Set.of(Role.RoleName.ADMIN));
         protectedUrls.put("/products/add", Set.of(Role.RoleName.ADMIN));
         protectedUrls.put("/products/delete", Set.of(Role.RoleName.ADMIN));
-
         protectedUrls.put("/orders/new", Set.of(Role.RoleName.USER));
         protectedUrls.put("/user/orders", Set.of(Role.RoleName.USER));
         protectedUrls.put("/shoppingCart/products/add", Set.of(Role.RoleName.USER));
@@ -45,12 +44,10 @@ public class AuthorizationFilter implements Filter {
         HttpServletRequest req = (HttpServletRequest) request;
         HttpServletResponse resp = (HttpServletResponse) response;
         String url = req.getServletPath();
-
         if (protectedUrls.get(url) == null) {
             chain.doFilter(req, resp);
             return;
         }
-
         Long userId = (Long) req.getSession().getAttribute(USER_ID);
         User user = userService.get(userId);
         if (isAuthorized(user, protectedUrls.get(url))) {

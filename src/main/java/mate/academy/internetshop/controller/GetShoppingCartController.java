@@ -1,7 +1,6 @@
 package mate.academy.internetshop.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 import javax.servlet.ServletException;
@@ -24,9 +23,10 @@ public class GetShoppingCartController extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException, NoSuchElementException {
         Long userId = (Long) req.getSession().getAttribute(USER_ID);
-        List<Product> productList = new ArrayList<>();
-        productList = shoppingCartService.getByUserId(userId).getProducts();
+        List<Product> productList =
+                shoppingCartService.getByUserId(userId).getProducts();
         req.setAttribute("products", productList);
+        req.setAttribute("products_available", productList.size() > 0 ? 1 : 0);
         req.getRequestDispatcher("/WEB-INF/views/shoppingCart.jsp").forward(req, resp);
     }
 }
