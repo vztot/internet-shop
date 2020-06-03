@@ -12,7 +12,6 @@
         <br>
         <br>
         <h1 class="h1-responsive my-5">Users</h1>
-
         <table class="mt-5 table table-striped table-bordered" cellspacing="0" width="100%">
             <tr>
                 <th>ID</th>
