@@ -11,7 +11,6 @@ public class ConnectionUtil {
     private static final String USER_NAME = "b5e6a4c6bf381c";
     private static final String PASSWORD = "78c63202";
     private static final String URL = "jdbc:mysql://eu-cdbr-west-03.cleardb.net:3306/";
-
     //    private static final String DB_NAME = "internet_shop";
     //    private static final String USER_NAME = "root";
     //    private static final String PASSWORD = "******";
