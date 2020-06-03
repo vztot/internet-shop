@@ -2,6 +2,8 @@
 
 ![gif](doc/img/sign-in.gif)
 
+You can see my project online: [link](https://vztot-internet-shop.herokuapp.com/)
+
 ## Table of Contents
 
 * [Project purpose](#project-purpose)
