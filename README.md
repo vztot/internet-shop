@@ -2,7 +2,7 @@
 
 ![gif](doc/img/sign-in.gif)
 
-You can see my project online: [link](https://vztot-internet-shop.herokuapp.com/)
+You can visit my project on heroku: [link](https://vztot-internet-shop.herokuapp.com/)
 
 ## Table of Contents
 
