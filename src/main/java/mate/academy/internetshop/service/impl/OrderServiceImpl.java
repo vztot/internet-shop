@@ -2,6 +2,7 @@ package mate.academy.internetshop.service.impl;
 
 import java.util.List;
 import mate.academy.internetshop.dao.OrderDao;
+import mate.academy.internetshop.exception.DataProcessingException;
 import mate.academy.internetshop.lib.Inject;
 import mate.academy.internetshop.lib.Service;
 import mate.academy.internetshop.model.Order;
@@ -21,7 +22,9 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public Order completeOrder(List<Product> products, Long userId) {
-        shoppingCartService.clear(shoppingCartService.getByUserId(userId));
+        shoppingCartService.clear(shoppingCartService.getByUserId(userId).orElseThrow(
+                () -> new DataProcessingException(
+                        "Cant clear shopping cart for userId:" + userId)));
         return orderDao.create(new Order(products, userId));
     }
 

@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import mate.academy.internetshop.exception.DataProcessingException;
 import mate.academy.internetshop.lib.Injector;
 import mate.academy.internetshop.model.Product;
 import mate.academy.internetshop.service.ShoppingCartService;
@@ -24,7 +25,9 @@ public class GetShoppingCartController extends HttpServlet {
             throws ServletException, IOException, NoSuchElementException {
         Long userId = (Long) req.getSession().getAttribute(USER_ID);
         List<Product> productList =
-                shoppingCartService.getByUserId(userId).getProducts();
+                shoppingCartService.getByUserId(userId).orElseThrow(
+                        () -> new DataProcessingException("Cant get a shopping cart for userId:"
+                                + userId)).getProducts();
         req.setAttribute("products", productList);
         req.setAttribute("products_available", productList.size() > 0 ? 1 : 0);
         req.getRequestDispatcher("/WEB-INF/views/shoppingCart.jsp").forward(req, resp);
