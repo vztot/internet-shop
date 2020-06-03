@@ -5,6 +5,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import mate.academy.internetshop.exception.DataProcessingException;
 import mate.academy.internetshop.lib.Injector;
 import mate.academy.internetshop.model.ShoppingCart;
 import mate.academy.internetshop.service.OrderService;
@@ -22,7 +23,8 @@ public class CompleteOrderController extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws IOException {
         Long userId = (Long) req.getSession().getAttribute(USER_ID);
-        ShoppingCart shoppingCart = shoppingCartService.getByUserId(userId);
+        ShoppingCart shoppingCart = shoppingCartService.getByUserId(userId).orElseThrow(
+                () -> new DataProcessingException("Cant get a shopping cart for userId:" + userId));
         orderService.completeOrder(shoppingCart.getProducts(), shoppingCart.getUserId());
         resp.sendRedirect(req.getContextPath() + "/user/orders");
     }

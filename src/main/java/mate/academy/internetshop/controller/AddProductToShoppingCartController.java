@@ -5,6 +5,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import mate.academy.internetshop.exception.DataProcessingException;
 import mate.academy.internetshop.lib.Injector;
 import mate.academy.internetshop.model.ShoppingCart;
 import mate.academy.internetshop.service.ProductService;
@@ -24,7 +25,9 @@ public class AddProductToShoppingCartController extends HttpServlet {
             throws IOException {
         Long userId = (Long) req.getSession().getAttribute(USER_ID);
         String productId = req.getParameter("product_id");
-        ShoppingCart shoppingCart = shoppingCartService.getByUserId(userId);
+        ShoppingCart shoppingCart = shoppingCartService.getByUserId(userId).orElseThrow(
+                () -> new DataProcessingException(
+                        "Cant get a shopping cart for userId:" + USER_ID));
         shoppingCartService.addProduct(shoppingCart, productService.get(Long.parseLong(productId)));
         resp.sendRedirect(req.getContextPath() + "/products/all");
     }
