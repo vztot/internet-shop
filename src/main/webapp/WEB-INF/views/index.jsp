@@ -92,7 +92,6 @@
         </a>
     </div>
 
-
     <!-- Marketing messaging and featurettes
     ================================================== -->
     <!-- Wrap the rest of the page in another container to center all the content. -->
@@ -133,7 +132,6 @@
                 <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
             </div><!-- /.col-lg-4 -->
         </div><!-- /.row -->
-
 
         <!-- START THE FEATURETTES -->
 
@@ -197,7 +195,6 @@
         <!-- /END THE FEATURETTES -->
 
     </div><!-- /.container -->
-
 
     <!-- FOOTER -->
     <footer class="container">
